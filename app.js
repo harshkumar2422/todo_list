@@ -16,11 +16,13 @@ connectDb();
 //middlewares
 app.use(express.json());
 app.use(cookieParser())
-app.use(cors({
-    origin:"https://react-todo-app-green-one.vercel.app/",
-    methods:["GET","POST","PUT","DELETE"],
-    credentials: true,
-}))
+
+
+
+
+
+
+app.use(cors())
 //Routes
 app.use('/api/v1',userRoute)
 app.use('/api/v1',taskRoute)
