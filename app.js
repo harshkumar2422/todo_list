@@ -17,7 +17,7 @@ connectDb();
 app.use(express.json());
 app.use(cookieParser())
 app.use(cors({
-    origin: [process.env.FRONTEND_URI],
+    origin:"https://react-todo-app-green-one.vercel.app/",
     methods:["GET","POST","PUT","DELETE"],
     credentials: true,
 }))
