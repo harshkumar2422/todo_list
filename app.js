@@ -16,16 +16,18 @@ connectDb();
 //middlewares
 app.use(express.json());
 app.use(cookieParser())
-
-
-
-
-
-
-app.use(cors())
+app.use(cors({
+    origin:"https://react-todo-app-green-one.vercel.app",
+    credentials:true,
+    methods:["GET","POST","PUT","DELETE"]
+}))
 //Routes
 app.use('/api/v1',userRoute)
 app.use('/api/v1',taskRoute)
+
+app.get("/",(req,res)=>{
+    res.send("server is working")
+})
 
 //error middlewares
 
