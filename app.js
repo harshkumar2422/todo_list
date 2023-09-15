@@ -16,11 +16,11 @@ connectDb();
 //middlewares
 app.use(express.json());
 app.use(cookieParser())
-app.use(cors({
-    origin: [process.env.FRONTEND_URI],
-    methods:["GET", "POST","PUT", "DELETE"],
-    credentials: true,
-}))
+// app.use(cors({
+//     origin: [process.env.FRONTEND_URI],
+//     methods:["GET", "POST","PUT", "DELETE"],
+//     credentials: true,
+// }))
 //Routes
 app.use('/api/v1',userRoute)
 app.use('/api/v1',taskRoute)
