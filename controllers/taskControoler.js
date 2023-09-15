@@ -4,16 +4,19 @@ import { Task } from "../models/taskodels.js";
 
 export const addtask = async (req, res, next) => {
   try {
+    console.log('working 1');
     const { title, description } = req.body;
-
+  
     await Task.create({ title, description, user: req.user });
 
     res.status(201).json({
+    
       success: true,
       message: "task created successfully",
     });
+    console.log('woeking2')
   } catch (error) {
-    next(error);
+    console.log(error);
   }
 };
 
@@ -50,17 +53,17 @@ export const updatedTask = async (req, res) => {
 };
 
 export const deleteTask = async (req, res, next) => {
- try {
-  const task = await Task.findById(req.params.id);
+  try {
+    const task = await Task.findById(req.params.id);
 
-  if (!task) return next(new ErrorHandler("invalid id", 404));
+    if (!task) return next(new ErrorHandler("invalid id", 404));
 
-  await task.deleteOne();
-  res.status(200).json({
-    success: true,
-    message: "task updated successfully",
-  });
- } catch (error) {
-  next(error)
- }
+    await task.deleteOne();
+    res.status(200).json({
+      success: true,
+      message: "task updated successfully",
+    });
+  } catch (error) {
+    next(error);
+  }
 };
